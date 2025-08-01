@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>Know Your Rights</title>
+</head>
+<body>
+    <h1>State Legal Rights App</h1>
+    <form method="POST">
+        <label>Enter State Abbreviation (e.g., NC, CA, VA, etc.):</label><br>
+        <input name="state" required>
+        <button type="submit">Get Rights</button>
+    </form>
+
+    {% if result %}
+        <h2>Legal Rights Info:</h2>
+        {% if result == "No data for that state." %}
+            <p>{{ result }}</p>
+        {% else %}
+            <ul>
+                <li><strong>Traffic Stops:</strong> {{ result.traffic }}</li>
+                <li><strong>School Searches:</strong> {{ result.school }}</li>
+                <li><strong>Protests:</strong> {{ result.protest }}</li>
+            </ul>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
